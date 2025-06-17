@@ -11,6 +11,8 @@ app = FastAPI()
 
 # PostgreSQL connection URL
 DATABASE_URL = os.environ.get("DATABASE_URL")
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL environment variable is not set.")
 
 # SQLAlchemy setup
 engine = create_engine(DATABASE_URL)

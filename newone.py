@@ -4,12 +4,13 @@ from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
+import os
 
 # FastAPI app
 app = FastAPI()
 
 # PostgreSQL connection URL
-DATABASE_URL = "postgresql://iot_user:iot_pass@localhost/iot_data_db"
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
 # SQLAlchemy setup
 engine = create_engine(DATABASE_URL)
